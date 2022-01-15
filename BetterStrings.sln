@@ -13,10 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterStrings.ConsoleApp", "src\BetterStrings.ConsoleApp\BetterStrings.ConsoleApp.csproj", "{58051909-90E1-45BA-8204-0DE1588A62F1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62F1C713-9814-4692-813D-1898E72E4BAA} = {62F1C713-9814-4692-813D-1898E72E4BAA}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterStrings.Processors", "src\BetterStrings.Processors\BetterStrings.Processors.csproj", "{62F1C713-9814-4692-813D-1898E72E4BAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterStrings.Processors", "src\BetterStrings.Processors\BetterStrings.Processors.csproj", "{62F1C713-9814-4692-813D-1898E72E4BAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterStrings.UnitTests", "tests\BetterStrings.UnitTests\BetterStrings.UnitTests.csproj", "{BC1681EB-5F28-436B-8F6E-251A5441AA6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterStrings.UnitTests", "tests\BetterStrings.UnitTests\BetterStrings.UnitTests.csproj", "{BC1681EB-5F28-436B-8F6E-251A5441AA6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
