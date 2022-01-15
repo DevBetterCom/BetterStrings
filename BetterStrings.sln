@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B117095B-8A44-44F4-BEA0-F8532D8799B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{56E9D4EC-A166-4867-B6B9-31B0CD43B5AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D5D7B45-97AE-4F6C-8D8B-85B67746BBFA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterStrings.ConsoleApp", "src\BetterStrings.ConsoleApp\BetterStrings.ConsoleApp.csproj", "{58051909-90E1-45BA-8204-0DE1588A62F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58051909-90E1-45BA-8204-0DE1588A62F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58051909-90E1-45BA-8204-0DE1588A62F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58051909-90E1-45BA-8204-0DE1588A62F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58051909-90E1-45BA-8204-0DE1588A62F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{58051909-90E1-45BA-8204-0DE1588A62F1} = {B117095B-8A44-44F4-BEA0-F8532D8799B0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FC18A01-00F4-48D2-831F-9B0D395AB1E2}
+	EndGlobalSection
+EndGlobal
