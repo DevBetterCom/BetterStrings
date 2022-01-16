@@ -32,24 +32,35 @@ public class AsyncProgram
 
   private async Task OnExecuteAsync() // do we need async for this app or should we just use sync?
   {
+    AnsiConsole.Write(new Rule("[blue]Welcome to BetterString[/]"));
+
     var configInfo = new ConfigInfo("verbose");
     var logger = CreateLogger(configInfo.LogLevel);
     logger.Debug("Logger Enabled");
     _serviceProvider = SetupDi(configInfo, logger);
     logger.Debug("DI Setup Done");
-    AnsiConsole.Markup("[underline red]Hello[/] World!");
 
-    if(Mode == "i")
+    if (Mode == "i")
     {
-      string processorUserChoice = AnsiConsole.Prompt(
-          new TextPrompt<string>("What processor do you want to use?")
-              .InvalidChoiceMessage("[red]That's not a valid processor[/]")
-              .DefaultValue("hash")
-              .AddChoice("other"));
+      AnsiConsole.MarkupLine("[bold blue]Interactive mode...[/]");
+      string userInputString = AnsiConsole.Ask<string>("Provide a string to transform.");
 
-      // ToDo: Select the correct processor
+
+      var processorChoice = AnsiConsole.Prompt(
+          new SelectionPrompt<string>()
+              .Title("Which processor do you want to use ?")
+              .PageSize(10)
+              .MoreChoicesText("[grey](Move up and down to reveal more processors)[/]")
+              .AddChoices(new[] {
+            "MD5", "Apricot", "Avocado",
+            "Banana", "Blackcurrant", "Blueberry",
+            "Cherry", "Cloudberry", "Cocunut",
+              }));
+
+      AnsiConsole.WriteLine($"I agree. {processorChoice} is tasty!");
+
       var processor = new HashProcessor();
-      var result = processor.Process(InputString);
+      var result = processor.Process(userInputString);
 
       Console.WriteLine(result);
     }
