@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BetterStrings.ConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "md5 email"
+    }
+  }
+}
