@@ -4,6 +4,7 @@ using Serilog;
 using Serilog.Extensions.Logging;
 using Microsoft.Extensions.Logging;
 using BetterStrings.Processors.Crypto;
+using Spectre.Console;
 
 namespace BetterStrings.ConsoleApp;
 // See: https://briancaos.wordpress.com/2020/02/12/command-line-parameters-in-net-core-console-applications/
@@ -26,6 +27,9 @@ public class AsyncProgram
   [Argument(1, Description = "Input string")]
   public string InputString { get; } = "";
 
+  [Option("-m|--mode", Description = "interactive/command: i, c")]
+  public string Mode { get; } = "c";
+
   private async Task OnExecuteAsync() // do we need async for this app or should we just use sync?
   {
     var configInfo = new ConfigInfo("verbose");
@@ -33,11 +37,32 @@ public class AsyncProgram
     logger.Debug("Logger Enabled");
     _serviceProvider = SetupDi(configInfo, logger);
     logger.Debug("DI Setup Done");
+    AnsiConsole.Markup("[underline red]Hello[/] World!");
 
-    // call main service that has app logic using _serviceProvider to create it
-    var processor = new HashProcessor();
-    var result = processor.Process(InputString);
-    Console.WriteLine(result);
+    if(Mode == "i")
+    {
+      string processorUserChoice = AnsiConsole.Prompt(
+          new TextPrompt<string>("What processor do you want to use?")
+              .InvalidChoiceMessage("[red]That's not a valid processor[/]")
+              .DefaultValue("hash")
+              .AddChoice("other"));
+
+      // ToDo: Select the correct processor
+      var processor = new HashProcessor();
+      var result = processor.Process(InputString);
+
+      Console.WriteLine(result);
+    }
+    else
+    {
+      // call main service that has app logic using _serviceProvider to create it
+      var processor = new HashProcessor();
+      var result = processor.Process(InputString);
+
+      Console.WriteLine(result);
+
+    }
+
 
     // Console.WriteLine("Done, press any key to close");
     // Console.ReadKey();
