@@ -14,24 +14,29 @@ public class BranchFriendlyNameProcessor
     // no special char, no spaces > replace with - instead of space
     // all lower case
   }
+  //Input: Task 2: This is my test task
 
+  //Output: -> task/2/this-is-my-test-task
   public string Process(string input)
   {
-    input = input.Replace("Task ", "task/");
-    input = input.ToLower();
-    input = input.Replace("ä", "ae");
-    input = input.Replace("ö", "oe");
-    input = input.Replace("ü", "ue");
-    input = input.Replace(' ', '-');
-    input = input.Replace(".", string.Empty);
-    input = input.Replace(":", string.Empty);
+    string[] parts = input.Split(new string[] { ":", " " }, StringSplitOptions.RemoveEmptyEntries);
 
-    input = input.Substring(0, Math.Min(input.Length, 50));
+    string friendlyName = $"{parts[0]}/{parts[1]}/{parts[2]}";
 
-    Console.WriteLine("Suggested Branch input:");
+    for (int i = 3; i < parts.Length; i++)
+    {
+      friendlyName += "-";
+      friendlyName += parts[i];
+    }
 
-    Console.WriteLine(input);
+    friendlyName = friendlyName.ToLower();
 
-    return input;
+    friendlyName = friendlyName.Replace("ä", "ae");
+    friendlyName = friendlyName.Replace("ö", "oe");
+    friendlyName = friendlyName.Replace("ü", "ue");
+
+    friendlyName = friendlyName.Substring(0, Math.Min(friendlyName.Length, 50));
+
+    return friendlyName;
   }
 }
