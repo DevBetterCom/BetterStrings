@@ -35,18 +35,25 @@ public class AsyncProgram
   {
     string userInputString = "";
     string processorChoice = "";
+    string result = "";
+
     AnsiConsole.Write(new Rule("[blue]Welcome to BetterString[/]"));
-    string result;
+
     var configInfo = new ConfigInfo("verbose");
+
     var logger = CreateLogger(configInfo.LogLevel);
+
     logger.Debug("Logger Enabled");
+
     _serviceProvider = SetupDi(configInfo, logger);
+
     logger.Debug("DI Setup Done");
 
     if (Mode == "i")
     {
       AnsiConsole.MarkupLine("[bold blue]Interactive mode...[/]");
-      userInputString = AnsiConsole.Ask<string>("Provide a string to transform.");
+      
+      userInputString = AnsiConsole.Ask<string>("Provide a string to transform: ");
 
       var selection = new SelectionPrompt<string>()
         .Title("Which processor do you want to use ?")
@@ -58,8 +65,7 @@ public class AsyncProgram
         });
       processorChoice = AnsiConsole.Prompt(selection);
 
-      AnsiConsole.WriteLine($"I agree. {processorChoice} is tasty!");
-
+      AnsiConsole.WriteLine(processorChoice);
 
     }
     else
@@ -82,6 +88,8 @@ public class AsyncProgram
       default:
         break;
     }
+    AnsiConsole.WriteLine(result);
+
   }
 
   private Serilog.ILogger CreateLogger(string logLevel)
