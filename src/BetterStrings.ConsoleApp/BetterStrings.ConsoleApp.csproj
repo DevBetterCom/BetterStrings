@@ -25,4 +25,6 @@
 	  <ProjectReference Include="..\BetterStrings.Processors\BetterStrings.Processors.csproj" />
 	</ItemGroup>
 
+
+
 </Project>
