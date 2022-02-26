@@ -12,7 +12,7 @@ namespace BetterStrings.UnitTests.Processors.FriendlyName
   {
     [Theory]
     [InlineData("Task 2: This is my test task", "task/2/this-is-my-test-task")]
-    [InlineData("Task 2: Hä Hö Hü", "task/2/hae-hou-hue")]
+    [InlineData("Task 2: Hä Hö Hü", "task/2/hae-hoe-hue")]
     public void ReturnsFriendlyNameForGivenInput(string input, string expectedResult)
     {
       var processor = new BranchFriendlyNameProcessor();
