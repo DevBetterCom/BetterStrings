@@ -1,7 +1,5 @@
 ﻿using Serilog.Events;
 
-namespace BetterStrings.SpectreConsoleApp;
-
 public static class LoggerExtensions
 {
   public static LogEventLevel? ToLogEventLevel(this string level)
