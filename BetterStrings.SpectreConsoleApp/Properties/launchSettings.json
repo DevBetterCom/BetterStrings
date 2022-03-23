@@ -2,7 +2,7 @@
   "profiles": {
     "BetterStrings.SpectreConsoleApp": {
       "commandName": "Project",
-      "commandLineArgs": "-m interactive"
+      "commandLineArgs": "-m interactive -v verbose"
     }
   }
 }
