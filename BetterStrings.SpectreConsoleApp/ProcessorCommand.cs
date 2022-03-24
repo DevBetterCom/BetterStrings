@@ -4,6 +4,8 @@ using Spectre.Console.Cli;
 using Serilog;
 using Serilog.Extensions.Logging;
 using Microsoft.Extensions.Logging;
+using BetterStrings.Processors.Crypto;
+using BetterStrings.Processors.FriendlyName;
 
 
 namespace BetterStrings.SpectreConsoleApp
@@ -55,6 +57,7 @@ namespace BetterStrings.SpectreConsoleApp
 
     public void EnterInteractiveMode(ProcessorSettings settings)
     {
+      string result;
       initialiseLoggerAndDependecyInjection(settings);
 
       AnsiConsole.MarkupLine("[bold blue]Interactive mode...[/]");
@@ -72,6 +75,24 @@ namespace BetterStrings.SpectreConsoleApp
       settings.Processor = AnsiConsole.Prompt(selection);
 
       AnsiConsole.WriteLine(settings.Processor);
+
+      switch (settings.Processor)
+      {
+        case "MD5":
+          var hashProcessor = new HashProcessor();
+          result = hashProcessor.Process(userInputString);
+          break;
+
+        case "Branch Friendly Name":
+          var branchProcessor = new BranchFriendlyNameProcessor();
+          result = branchProcessor.Process(userInputString);
+          break;
+
+        default:
+          result = "";
+          break;
+      }
+      AnsiConsole.WriteLine(result);
     }
 
     private void initialiseLoggerAndDependecyInjection(ProcessorSettings settings)

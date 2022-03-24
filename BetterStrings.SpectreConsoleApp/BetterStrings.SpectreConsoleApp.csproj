@@ -21,4 +21,8 @@
     <PackageReference Include="Spectre.Console" Version="0.43.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\BetterStrings.Processors\BetterStrings.Processors.csproj" />
+  </ItemGroup>
+
 </Project>

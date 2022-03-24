@@ -1,12 +1,5 @@
-﻿using System.ComponentModel;
-using Microsoft.Extensions.DependencyInjection;
-using Spectre.Console;
-using Spectre.Console.Cli;
-using Serilog;
-using Serilog.Extensions.Logging;
-using Microsoft.Extensions.Logging;
-
-namespace BetterStrings.SpectreConsoleApp;
+﻿using Spectre.Console.Cli;
+using BetterStrings.SpectreConsoleApp;
 
 public static class Program
 {
