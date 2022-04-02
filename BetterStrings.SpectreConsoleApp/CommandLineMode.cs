@@ -21,14 +21,14 @@ namespace BetterStrings.SpectreConsoleApp
 
       AnsiConsole.WriteLine(ProcessorName);
 
-      switch (InputSring)
+      switch (ProcessorName)
       {
-        case "MD5":
+        case "md5":
           var hashProcessor = new HashProcessor();
           result = hashProcessor.Process(InputSring);
           break;
 
-        case "Branch Friendly Name":
+        case "branch-friendly-name":
           var branchProcessor = new BranchFriendlyNameProcessor();
           result = branchProcessor.Process(InputSring);
           break;
