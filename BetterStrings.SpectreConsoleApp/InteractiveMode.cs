@@ -9,7 +9,7 @@ using BetterStrings.Processors.FriendlyName;
 
 namespace BetterStrings.SpectreConsoleApp
 {
-  public class IneractiveMode
+  public class InteractiveMode
   {
     public void Enter()
     {

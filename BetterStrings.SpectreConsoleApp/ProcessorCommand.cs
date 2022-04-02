@@ -14,7 +14,6 @@ namespace BetterStrings.SpectreConsoleApp
   {
     private static IServiceProvider _serviceProvider;
 
-
     private Serilog.ILogger CreateLogger(string logLevel)
     {
       var loggerLevel = logLevel.ToLower().ToSerilogEventLevel().Value;
@@ -38,7 +37,8 @@ namespace BetterStrings.SpectreConsoleApp
             .AddLogging()
             .AddSingleton<ILoggerFactory>(services => new SerilogLoggerFactory(logger, false))
             .AddSingleton(configInfo)
-            .AddSingleton<IneractiveMode>();
+            .AddSingleton<InteractiveMode>()
+            .AddSingleton<CommandLineMode>();
 
       return services.BuildServiceProvider();
     }
@@ -59,17 +59,18 @@ namespace BetterStrings.SpectreConsoleApp
       {
         case "interactive":
         case "i":
-          var interactiveMode = _serviceProvider.GetService<IneractiveMode>();
+          InteractiveMode interactiveMode = _serviceProvider.GetService<InteractiveMode>();
           interactiveMode.Enter();
           break;
         case "command":
         case "c":
+          CommandLineMode commandLineMode = _serviceProvider.GetService<CommandLineMode>();
+          commandLineMode.ProcessorName = settings.Processor;
+          commandLineMode.InputSring = settings.InputString;
+          commandLineMode.Enter();
           break;
       }
-
       return 0;
     }
-
-
   }
 }
