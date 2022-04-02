@@ -2,7 +2,7 @@
 
 public static class LoggerExtensions
 {
-  public static LogEventLevel? ToLogEventLevel(this string level)
+  public static LogEventLevel? ToSerilogEventLevel(this string level)
   {
     if (string.IsNullOrEmpty(level))
     {
